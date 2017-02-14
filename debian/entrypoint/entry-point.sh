@@ -21,7 +21,7 @@ else
 fi
 
 if [ -n "${ADMINID}" ]; then
-  echo "telegrambot = '${ADMINID}'" > ${APPDIR}/${APPFILE}
+  echo "adminchatid = [${ADMINID}]" >> ${APPDIR}/${APPFILE}
 else
   echo "!!ERROR: missing ADMINID variable" || exit 1
 fi
