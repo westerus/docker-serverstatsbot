@@ -11,7 +11,7 @@ fi
 TZ=${TZ:-"Europe/Madrid"}
 
 APPDIR="/usr/src/app"
-APPFILE"tokens.py"
+APPFILE="tokens.py"
 
 check_variables_telegrambots() {
 if [ -n "${BOTID}" ]; then
