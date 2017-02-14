@@ -28,3 +28,5 @@ fi
 }
 
 check_variables_telegrambots
+
+exec "$@"
