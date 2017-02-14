@@ -28,6 +28,7 @@ RUN $APTUPDATE && $APTUPGRADE && \
     musl-dev \
     ca-certificates \
     openssl \
+    python3-matplotlib \
     python3-setuptools  \
     python3-numpy \
     python3-dev && \

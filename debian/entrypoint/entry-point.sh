@@ -15,15 +15,15 @@ APPFILE="tokens.py"
 
 check_variables_telegrambots() {
 if [ -n "${BOTID}" ]; then
-  echo "telegrambot = ${BOTID}" > ${APPDIR}/${APPFILE}
+  echo "telegrambot = '${BOTID}'" > ${APPDIR}/${APPFILE}
 else
-  echo "!!ERROR: missing BOTID variable"
+  echo "!!ERROR: missing BOTID variable" || exit 1
 fi
 
 if [ -n "${ADMINID}" ]; then
-  echo "telegrambot = ${ADMINID}" > ${APPDIR}/${APPFILE}
+  echo "adminchatid = [${ADMINID}]" >> ${APPDIR}/${APPFILE}
 else
-  echo "!!ERROR: missign ADMINID variable"
+  echo "!!ERROR: missing ADMINID variable" || exit 1
 fi
 }
 
