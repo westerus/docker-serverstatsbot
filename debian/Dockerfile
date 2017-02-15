@@ -1,5 +1,6 @@
-FROM python
-LABEL Maintainer "westerus@gmail.com" \
+FROM python:3.4-slim
+LABEL Maintainer="westerus@gmail.com" \
+      Name="ServerStatsBot" \
       Description="Image of Telegram Bot ServerStatsBot" \
       Version="1.0.0"
 
@@ -31,10 +32,13 @@ RUN $APTUPDATE && $APTUPGRADE && \
     python3-matplotlib \
     python3-setuptools  \
     python3-numpy \
-    python3-dev && \
-    $PIPINSTALL telepot psutil matplotlib && \
-    git clone https://github.com/geekbeard/ServerStatsBot.git /usr/src/app && \
+    python3-dev \
+    git && \
+    $PIPINSTALL telepot psutil && \
+    git clone https://github.com/geekbeard/ServerStatsBot.git /usr/local/src && \
     $DELTEMP
 
+WORKDIR /usr/local/src
+
 ENTRYPOINT ["/entry-point.sh"]
-CMD ["python3", "/usr/src/app/servstatsbot.py"]
+CMD ["python3", "servstatsbot.py"]
