@@ -18,9 +18,10 @@ ARG APTREMOVE="apt-get ${APT_FLAGS_COMMON} purge"
 
 ARG PIPINSTALL="pip install --no-cache-dir --upgrade"
 
-ENV PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin" \
-HOME="/root" IDIOM=es_ES CN=es TZ="Europe/Madrid" \
-TERM=xterm DEBIAN_FRONTEND=noninteractive DEBIANTAG=jessie
+ARG PYTHONVER=python3.6
+ENV PYTHONPATH="${PYTHONPATH}/usr/local/lib/${PYTHONVER}/site-packages:/usr/lib/${PYTHONVER}/site-packages" \
+IDIOM=es_ES CN=es TZ="Europe/Madrid" \
+DEBIAN_FRONTEND=noninteractive
 
 COPY entrypoint/entry-point.sh .
 RUN $APTUPDATE && $APTUPGRADE && \
