@@ -1,4 +1,4 @@
-FROM python:3.4-slim
+FROM python:3.6-slim
 LABEL Maintainer="westerus@gmail.com" \
       Name="ServerStatsBot" \
       Description="Image of Telegram Bot ServerStatsBot" \
@@ -39,7 +39,5 @@ RUN $APTUPDATE && $APTUPGRADE && \
     git clone https://github.com/geekbeard/ServerStatsBot.git /usr/local/src && \
     $DELTEMP
 
-WORKDIR /usr/local/src
-
 ENTRYPOINT ["/entry-point.sh"]
-CMD ["python3", "servstatsbot.py"]
+CMD ["python3", "/usr/local/src/servstatsbot.py"]
