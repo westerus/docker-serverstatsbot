@@ -14,23 +14,24 @@ In Telegram:
 
 4.  I have chosen "Name Bot" as the screen name and "uniquename_bot" as its username.
 
-You should see a new API token generated for variable "BOTID". You can see newly generated token type is (270485614:AAHfiqksKZ8WmR2zSjiQ7_v4TMAKdiHm9T0).
+    You should see a new API token generated for variable "BOTID". You can see newly generated token type is (270485614:AAHfiqksKZ8WmR2zSjiQ7_v4TMAKdiHm9T0).
 
-BOTID="API token"
-Example.
+    BOTID="API token"
+    Example.
     BOTID="270485614:AAHfiqksKZ8WmR2zSjiQ7_v4TMAKdiHm9T0"
 
-Now you can search for your newly created bot on telegram. @Name Bot
+    Now you can search for your newly created bot on telegram. @Name Bot
 
 5.  Get user id for variable "ADMINID".
     Access to "userinfobot" in telegram.
     Type /start and get @Userid
-ADMINID="User ID"
-Example.
+
+    ADMINID="User ID"
+    Example.
     ADMINID="12345678"
 
 # Usage Docker
-    docker run -d --privileged -e BOTID="270485614:AAHfiqksKZ8WmR2zSjiQ7_v4TMAKdiHm9T0" -e ADMINID="12345679" westerus/servstatsbot
+    docker run -d -e BOTID="270485614:AAHfiqksKZ8WmR2zSjiQ7_v4TMAKdiHm9T0" -e ADMINID="12345679" westerus/serverstatsbot
 
 # Usage Server Manager Bot
 
