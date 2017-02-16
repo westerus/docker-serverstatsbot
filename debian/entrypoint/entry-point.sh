@@ -10,7 +10,7 @@ fi
 # Default timezone for web interface
 TZ=${TZ:-"Europe/Madrid"}
 
-APPDIR="/usr/src/app"
+APPDIR="/usr/local/src"
 APPFILE="tokens.py"
 
 check_variables_telegrambots() {

@@ -1,5 +1,6 @@
-FROM python
-LABEL Maintainer "westerus@gmail.com" \
+FROM python:3.4-slim
+LABEL Maintainer="westerus@gmail.com" \
+      Name="ServerStatsBot" \
       Description="Image of Telegram Bot ServerStatsBot" \
       Version="1.0.0"
 
@@ -17,9 +18,10 @@ ARG APTREMOVE="apt-get ${APT_FLAGS_COMMON} purge"
 
 ARG PIPINSTALL="pip install --no-cache-dir --upgrade"
 
-ENV PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin" \
-HOME="/root" IDIOM=es_ES CN=es TZ="Europe/Madrid" \
-TERM=xterm DEBIAN_FRONTEND=noninteractive DEBIANTAG=jessie
+ARG PYTHONVER=python3.4
+ENV PYTHONPATH="${PYTHONPATH}/usr/local/lib/${PYTHONVER}/site-packages" \
+IDIOM=es_ES CN=es TZ="Europe/Madrid" \
+DEBIAN_FRONTEND=noninteractive
 
 COPY entrypoint/entry-point.sh .
 RUN $APTUPDATE && $APTUPGRADE && \
@@ -28,13 +30,12 @@ RUN $APTUPDATE && $APTUPGRADE && \
     musl-dev \
     ca-certificates \
     openssl \
-    python3-matplotlib \
     python3-setuptools  \
-    python3-numpy \
-    python3-dev && \
+    python3-dev \
+    git && \
     $PIPINSTALL telepot psutil matplotlib && \
-    git clone https://github.com/geekbeard/ServerStatsBot.git /usr/src/app && \
+    git clone https://github.com/geekbeard/ServerStatsBot.git /usr/local/src && \
     $DELTEMP
 
 ENTRYPOINT ["/entry-point.sh"]
-CMD ["python3", "/usr/src/app/servstatsbot.py"]
+CMD ["python3", "/usr/local/src/servstatsbot.py"]
